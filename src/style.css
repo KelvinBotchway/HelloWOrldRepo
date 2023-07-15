@@ -1,0 +1,22 @@
+.submitdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.todo-div{
+    text-align: center;
+}
+
+.input-box{
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.todo-button{
+    border-radius: 5px;
+    cursor: pointer;
+}
+

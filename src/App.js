@@ -39,7 +39,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='todo-div'>
       <h1>To-Do List</h1>
 
       <ul>
