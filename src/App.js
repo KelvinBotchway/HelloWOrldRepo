@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddTodoForm from './AddTodoForm';
+import "./style.css"
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -7,7 +8,7 @@ function App() {
   const [editTodo, setEditTodo] = useState('');
 
   const addTodo = (newTodo) => {
-    const updatedTodos = [...todos, newTodo];
+    const updatedTodos = [...todos, { task: newTodo, completed: false }];
     setTodos(updatedTodos);
   };
 
@@ -27,7 +28,7 @@ function App() {
       return;
     }
     const updatedTodos = [...todos];
-    updatedTodos[editIndex] = editTodo;
+    updatedTodos[editIndex].task = editTodo;
     setTodos(updatedTodos);
     setEditIndex(null);
     setEditTodo('');
@@ -38,28 +39,44 @@ function App() {
     setEditTodo('');
   };
 
+  const handleCheckboxChange = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    if (updatedTodos[index].completed) {
+      setTimeout(() => {
+        deleteTodo(index);
+      }, 1000); // Automatically remove completed task after 1 second
+    }
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className='todo-div'>
       <h1>To-Do List</h1>
 
-      <ul>
+      <ul className='list-div'>
         {todos.map((todo, index) => (
-          <li key={index}>
+          <li className='list-list' key={index}>
+            <input
+              type='checkbox'
+              checked={todo.completed}
+              onChange={() => handleCheckboxChange(index)}
+            />
             {editIndex === index ? (
-                <div>
+              <div>
                 <input
-                  type="text"
+                  type='text'
                   value={editTodo}
                   onChange={(e) => setEditTodo(e.target.value)}
                 />
                 <button onClick={handleSave}>Save</button>
                 <button onClick={handleCancel}>Cancel</button>
-                </div>
+              </div>
             ) : (
-              <div>
-                {todo}
+              <div style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                {todo.task}
                 <button onClick={() => deleteTodo(index)}>Delete</button>
-                <button onClick={() => handleEdit(index, todo)}>Edit</button>
+                <button onClick={() => handleEdit(index, todo.task)}>Edit</button>
               </div>
             )}
           </li>
