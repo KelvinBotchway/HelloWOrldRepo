@@ -32,3 +32,17 @@
    flex-direction: row;
   margin-bottom: 10px;
 }
+
+.delete{
+    margin-left: 20px;
+    margin-right: 1px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.edit{
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+}

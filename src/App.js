@@ -75,8 +75,8 @@ function App() {
             ) : (
               <div style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                 {todo.task}
-                <button onClick={() => deleteTodo(index)}>Delete</button>
-                <button onClick={() => handleEdit(index, todo.task)}>Edit</button>
+                <button className='delete' onClick={() => deleteTodo(index)}>Delete</button>
+                <button className='edit' onClick={() => handleEdit(index, todo.task)}>Edit</button>
               </div>
             )}
           </li>
