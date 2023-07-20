@@ -21,6 +21,11 @@
     cursor: pointer;
 }
 
+.todo-button:hover{
+    transition: 1s;
+    transform: scale(1,2);
+}
+
 .list-div{
     display: flex;
     flex-direction: column;
