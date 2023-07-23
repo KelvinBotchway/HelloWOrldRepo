@@ -22,7 +22,7 @@ function AddTodoForm({ addTodo }) {
   return (
     <form className='submitdiv' onSubmit={handleSubmit}>
       
-      <textarea className= 'input-box' type="text" value={todo} onChange={handleChange} placeholder="Add a new task" />
+      <textarea className='input-box' type="text" value={todo} onChange={handleChange} placeholder="Add a new task" />
       <button className='todo-button' type="submit">Add Todo</button>
     </form>
   );
